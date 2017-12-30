@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CreateQuoteComponent implements OnInit {
   form: FormGroup;
+  @Output()
+  create = new EventEmitter<any>();
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -23,6 +25,7 @@ export class CreateQuoteComponent implements OnInit {
     console.log('form valid', this.form.valid);
     if(this.form.valid) {
       // todo add to Firebase
+      this.create.emit(this.form);
     }
   }
 
