@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { QuotesService } from './services/quotes.service';
 
 @Component({
   selector: 'app-quotes',
@@ -9,10 +9,10 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class QuotesComponent implements OnInit {
   quotes$;
 
-  constructor(private afDb: AngularFireDatabase) { }
+  constructor(private quotesService: QuotesService) { }
 
   ngOnInit() {
-    this.quotes$ = this.afDb.list('quotes').valueChanges();
+    this.quotes$ = this.quotesService.getQuotes();
   }
 
 }

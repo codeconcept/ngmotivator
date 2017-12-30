@@ -5,6 +5,10 @@ import { NgModule } from '@angular/core';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
+// our custom components, services ...
+import { QuotesService } from './quotes/services/quotes.service';
+
+
 
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
@@ -29,7 +33,9 @@ const config: FirebaseAppConfig = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config)
   ],
-  providers: [],
+  providers: [
+    QuotesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
