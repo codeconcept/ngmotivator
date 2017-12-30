@@ -15,4 +15,8 @@ export class QuotesComponent implements OnInit {
     this.quotes$ = this.quotesService.getQuotes();
   }
 
+  showQuoteDetails(quote) {
+    console.log('quote', quote);
+  }
+
 }

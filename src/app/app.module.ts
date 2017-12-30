@@ -14,6 +14,7 @@ import { QuotesService } from './quotes/services/quotes.service';
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { CreateQuoteComponent } from './backend/create-quote/create-quote.component';
+import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 
 const config: FirebaseAppConfig = {
   apiKey: "AIzaSyDNP4-DZ4QenTZho4W4pAWvKgVsJZoO55g",
@@ -29,7 +30,8 @@ const config: FirebaseAppConfig = {
   declarations: [
     AppComponent,
     QuotesComponent,
-    CreateQuoteComponent
+    CreateQuoteComponent,
+    QuoteDetailsComponent
   ],
   imports: [
     BrowserModule,

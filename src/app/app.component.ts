@@ -11,7 +11,9 @@ export class AppComponent {
 
   onQuoteCreated(quote) {
     console.log('quote value', quote.value);
-    this.quoteService.createQuote({ firstname: quote.value.firstname, lastname: quote.value.lastname, text: quote.value.quote });
+    let addedQuote = this.quoteService.createQuote({ firstname: quote.value.firstname, lastname: quote.value.lastname, text: quote.value.quote });
+    console.log('addedQuote', addedQuote);
+    
   }
 
 }
