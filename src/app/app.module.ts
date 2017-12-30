@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // firebase
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -12,6 +13,7 @@ import { QuotesService } from './quotes/services/quotes.service';
 
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
+import { CreateQuoteComponent } from './backend/create-quote/create-quote.component';
 
 const config: FirebaseAppConfig = {
   apiKey: "AIzaSyDNP4-DZ4QenTZho4W4pAWvKgVsJZoO55g",
@@ -26,12 +28,15 @@ const config: FirebaseAppConfig = {
 @NgModule({
   declarations: [
     AppComponent,
-    QuotesComponent
+    QuotesComponent,
+    CreateQuoteComponent
   ],
   imports: [
     BrowserModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(config)
+    AngularFireModule.initializeApp(config),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     QuotesService
