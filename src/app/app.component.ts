@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { QuotesService } from './quotes/services/quotes.service';
 
 @Component({
   selector: 'app-root',
@@ -6,9 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(private quoteService: QuotesService) {}
 
   onQuoteCreated(quote) {
-    console.log('quote retrieved', quote);
+    console.log('quote value', quote.value);
+    this.quoteService.createQuote({ firstname: quote.value.firstname, lastname: quote.value.lastname, text: quote.value.quote });
   }
 
 }
