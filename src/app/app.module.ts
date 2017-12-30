@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 // firebase
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -8,8 +9,6 @@ import { AngularFireModule, FirebaseAppConfig } from 'angularfire2';
 
 // our custom components, services ...
 import { QuotesService } from './quotes/services/quotes.service';
-
-
 
 import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
@@ -25,6 +24,11 @@ const config: FirebaseAppConfig = {
   messagingSenderId: "610805890571"
 };
 
+const ROUTES: Routes = [
+  { path: '', pathMatch: 'full', component: QuotesComponent },
+  { path: 'quote/:id', component: QuoteDetailsComponent },
+  { path: 'admin', component: CreateQuoteComponent}
+]
 
 @NgModule({
   declarations: [
@@ -38,7 +42,8 @@ const config: FirebaseAppConfig = {
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(config),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(ROUTES)
   ],
   providers: [
     QuotesService
