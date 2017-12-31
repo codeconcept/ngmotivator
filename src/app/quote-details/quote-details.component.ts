@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class QuoteDetailsComponent implements OnInit {
   quoteId;
+  quote: Quote;
 
   constructor(private activatedRoute: ActivatedRoute) { }
 

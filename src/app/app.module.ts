@@ -14,6 +14,8 @@ import { AppComponent } from './app.component';
 import { QuotesComponent } from './quotes/quotes.component';
 import { CreateQuoteComponent } from './backend/create-quote/create-quote.component';
 import { QuoteDetailsComponent } from './quote-details/quote-details.component';
+import { BackendHomeComponent } from './backend/backend-home/backend-home.component';
+import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
 
 const config: FirebaseAppConfig = {
   apiKey: "AIzaSyDNP4-DZ4QenTZho4W4pAWvKgVsJZoO55g",
@@ -27,7 +29,7 @@ const config: FirebaseAppConfig = {
 const ROUTES: Routes = [
   { path: '', pathMatch: 'full', component: QuotesComponent },
   { path: 'quote/:id', component: QuoteDetailsComponent },
-  { path: 'admin', component: CreateQuoteComponent}
+  { path: 'admin', component: BackendHomeComponent}
 ]
 
 @NgModule({
@@ -35,7 +37,9 @@ const ROUTES: Routes = [
     AppComponent,
     QuotesComponent,
     CreateQuoteComponent,
-    QuoteDetailsComponent
+    QuoteDetailsComponent,
+    BackendHomeComponent,
+    BackendQuotesComponent
   ],
   imports: [
     BrowserModule,
