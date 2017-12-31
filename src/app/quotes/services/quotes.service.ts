@@ -15,4 +15,8 @@ export class QuotesService {
     return this.afDb.list('quotes').push(quote);
   }
 
+  deleteQuoteById(id: string) {
+    return this.afDb.list('quotes').remove(id);
+  }
+
 }
