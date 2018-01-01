@@ -4,7 +4,7 @@
     <input type="text" formControlName="lastname" placeholder="nom de l'auteur"><br>
     <textarea formControlName="quote" cols="30" rows="10" placeholder="citation"></textarea><br>
     <button>{{verb}} la citation</button>
-    <button (click)="cancelEdit()">annuler la modification</button>
+    <button (click)="cancelEdit()" *ngIf="isInEditMode">annuler la modification</button>
   </form>
 </div>
 
