@@ -1,4 +1,6 @@
 <h2>Toutes les citations</h2>
+<a routerLink="/admin">admin</a>
+
 <ul>
-  <li *ngFor="let quote of quotes$ |async" (click)="showQuoteDetails(quote)">{{ quote.text }}</li>
+  <app-quote *ngFor="let q of quotes$  | async"  [quote]="q"></app-quote>
 </ul>

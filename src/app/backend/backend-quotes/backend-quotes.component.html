@@ -1,6 +1,8 @@
 <h2>Toutes les citations</h2>
 <ul>
   <li *ngFor="let quote of quotes$ |async">
+    
+    <button (click)="toggleToEditMode(quote)">modif</button>
     <button (click)="deleteQuote(quote)">suppr</button>
     <span (click)="showQuoteDetails(quote)">{{ quote.text }}</span>
   </li>

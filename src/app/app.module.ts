@@ -16,6 +16,7 @@ import { CreateQuoteComponent } from './backend/create-quote/create-quote.compon
 import { QuoteDetailsComponent } from './quote-details/quote-details.component';
 import { BackendHomeComponent } from './backend/backend-home/backend-home.component';
 import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
+import { QuoteComponent } from './quote/quote.component';
 
 const config: FirebaseAppConfig = {
   apiKey: "AIzaSyDNP4-DZ4QenTZho4W4pAWvKgVsJZoO55g",
@@ -39,7 +40,8 @@ const ROUTES: Routes = [
     CreateQuoteComponent,
     QuoteDetailsComponent,
     BackendHomeComponent,
-    BackendQuotesComponent
+    BackendQuotesComponent,
+    QuoteComponent
   ],
   imports: [
     BrowserModule,

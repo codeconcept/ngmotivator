@@ -1,12 +1,17 @@
 <div>
-  <form [formGroup]="form" (ngSubmit)="createQuote()">
-    <input type="text"formControlName="firstname" placeholder="prénom de l'auteur"><br>
-    <input type="text"formControlName="lastname" placeholder="nom de l'auteur"><br>
+  <form [formGroup]="form" (ngSubmit)="saveQuote()">
+    <input type="text" formControlName="firstname" placeholder="prénom de l'auteur"><br>
+    <input type="text" formControlName="lastname" placeholder="nom de l'auteur"><br>
     <textarea formControlName="quote" cols="30" rows="10" placeholder="citation"></textarea><br>
-    <button >ajouter la citation</button>
+    <button>{{verb}} la citation</button>
+    <button (click)="cancelEdit()">annuler la modification</button>
   </form>
 </div>
 
 <div>
   {{ form.value | json }}
+</div>
+<div>
+  quote from data
+  {{ quote | json}}
 </div>

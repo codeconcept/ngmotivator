@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { QuotesService } from '../../quotes/services/quotes.service';
 import { Router } from '@angular/router';
 import { AngularFireDatabase } from 'angularfire2/database';
+import { Quote } from '../../../quote.interface';
 
 @Component({
   selector: 'app-backend-quotes',
@@ -10,6 +11,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class BackendQuotesComponent implements OnInit {
   quotes$;
+  
+  @Output()
+  edit = new EventEmitter<Quote>();
 
   constructor(private quotesService: QuotesService) { }
 
@@ -19,8 +23,15 @@ export class BackendQuotesComponent implements OnInit {
 
   deleteQuote(quote) {
     console.log('delete quote', quote);
-    // this.afDb.list(`quotes`).remove(quote.key);
     this.quotesService.deleteQuoteById(quote.key);
+  }
+
+  toggleToEditMode(quote: Quote) {
+    this.quotesService.editQuote(quote);
+  }
+
+  showQuoteDetails(quote) {
+    console.log('showQuoteDetails');
   }
 
 }

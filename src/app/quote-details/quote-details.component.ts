@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Quote } from '../../quote.interface';
 
 @Component({
   selector: 'app-quote-details',
