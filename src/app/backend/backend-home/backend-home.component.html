@@ -1,6 +1,10 @@
 <h2>Administration</h2>
 <a routerLink="/">front</a>
 <hr>
+<app-register-user></app-register-user>
+
+<hr>
+
 <app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>
 
 <app-backend-quotes></app-backend-quotes>

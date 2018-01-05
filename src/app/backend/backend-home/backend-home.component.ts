@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { QuotesService } from '../../quotes/services/quotes.service';
 import { Quote } from '../../../quote.interface';
 
@@ -23,7 +24,6 @@ export class BackendHomeComponent implements OnInit {
   onQuoteUpdated(quote) {
     console.log('onQuoteUpdated', quote.value);
     let updatedQuote = this.quoteService.updateQuote({ firstname: quote.value.firstname, lastname: quote.value.lastname, text: quote.value.quote, key: quote.value.key });
-    // TODO then()
     console.log('updatedQuote', updatedQuote);
   }
 

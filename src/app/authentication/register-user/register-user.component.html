@@ -1,0 +1,9 @@
+<h3>Créer un compte</h3>
+<div>
+  <form #f="ngForm" (ngSubmit)="registerUser()">
+    <input type="text" name="email" placeholder="email" [(ngModel)]="newUser.email">
+    <input type="password" name="password" [(ngModel)]="newUser.password">
+    <button type="submit">créer un compte</button>
+  </form>
+</div>
+{{ f.value | json }}
