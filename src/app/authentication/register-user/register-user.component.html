@@ -6,15 +6,16 @@
     <button type="submit">créer un compte</button>
   </form>
 </div>
-{{ f.value | json }}
 
 <h3>Se connecter (j'ai déjà un compte)</h3>
 <div>
-  <form #login="ngForm" (ngSubmit)="loginUser()">
+  <form #login="ngForm" (ngSubmit)="loginUser()"  *ngIf="!(authService.user$ | async)">
     <input type="text" name="email" placeholder="email" [(ngModel)]="existingUser.email">
     <input type="password" name="password" [(ngModel)]="existingUser.password">
-    <button type="submit">se connecter</button>
-    <span *ngIf="authService.user$ | async">Connecté en tant que {{ (authService.user$ | async)?.email }}</span>
+    <button type="submit">se connecter</button>    
   </form>
 </div>
-{{ login.value | json }}
+<div *ngIf="authService.user$ | async">
+  <span>connecté en tant que {{ (authService.user$ | async)?.email }}</span>
+  <button type="button" (click)="logoutUser()">se déconnecter</button>
+</div>

@@ -8,7 +8,7 @@ import * as firebase from 'firebase/app';
 export class AuthService {
   user$: Observable<firebase.User>;
 
-  constructor(private angularfireAuth: AngularFireAuth) { 
+  constructor(private angularfireAuth: AngularFireAuth) {
     this.user$ = angularfireAuth.authState;
   }
 
@@ -22,6 +22,12 @@ export class AuthService {
     return this.angularfireAuth
       .auth
       .signInWithEmailAndPassword(email, password)
+  }
+
+  logout() {
+    this.angularfireAuth
+      .auth
+      .signOut();
   }
 
 }
