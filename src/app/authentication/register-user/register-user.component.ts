@@ -10,7 +10,8 @@ export class RegisterUserComponent implements OnInit {
   newUser = { email: '', password: '' };
   existingUser = { email: '', password: '' };
 
-  constructor(private authService: AuthService) { }
+  // public accessor so we can use authService inside the template  
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }

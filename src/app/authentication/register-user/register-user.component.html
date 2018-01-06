@@ -14,6 +14,7 @@
     <input type="text" name="email" placeholder="email" [(ngModel)]="existingUser.email">
     <input type="password" name="password" [(ngModel)]="existingUser.password">
     <button type="submit">se connecter</button>
+    <span *ngIf="authService.user$ | async">Connecté en tant que {{ (authService.user$ | async)?.email }}</span>
   </form>
 </div>
 {{ login.value | json }}
