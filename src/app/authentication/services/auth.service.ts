@@ -18,6 +18,20 @@ export class AuthService {
       .createUserWithEmailAndPassword(email, password);
   }
 
+  sendEmailVerification() {
+    const user = firebase.auth().currentUser;
+    if(user) {
+      console.log('user in sendEmailVerification', user);
+      user.sendEmailVerification().then(() => {
+        console.log('email envoyé');
+      }).catch((error) => {
+        console.error('error sending email', error);
+      });
+    }
+
+  }
+
+
   login(email: string, password: string) {
     return this.angularfireAuth
       .auth
