@@ -7,7 +7,8 @@ import { AuthService } from '../services/auth.service'
   styleUrls: ['./register-user.component.css']
 })
 export class RegisterUserComponent implements OnInit {
-  newUser = { email: '', password: ''};
+  newUser = { email: '', password: '' };
+  existingUser = { email: '', password: '' };
 
   constructor(private authService: AuthService) { }
 
@@ -16,11 +17,21 @@ export class RegisterUserComponent implements OnInit {
 
   registerUser() {
     this.authService.register(this.newUser.email, this.newUser.password)
-    .then(createdUser => {
-      console.log('createdUser', createdUser);  
-      // TODO reset form    
-    })
-    .catch(error => console.error(error.message));
+      .then(createdUser => {
+        console.log('createdUser', createdUser);
+        // TODO reset form    
+      })
+      .catch(error => console.error(error.message));
+  }
+
+  loginUser() {
+    this.authService.login(this.existingUser.email, this.existingUser.password)
+      .then(value => {
+        console.log('login réussi :)', value);
+      })
+      .catch(err => {
+        console.log('erreur :(', err.message);
+      });
   }
 
 }
