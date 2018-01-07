@@ -20,6 +20,7 @@ export class AuthService {
 
   sendEmailVerification() {
     const user = firebase.auth().currentUser;
+    firebase.auth().languageCode = 'fr';
     if(user) {
       console.log('user in sendEmailVerification', user);
       user.sendEmailVerification().then(() => {
