@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-register-user',
@@ -21,8 +20,12 @@ export class RegisterUserComponent implements OnInit {
     this.authService.register(this.newUser.email, this.newUser.password)
       .then(createdUser => {
         console.log('createdUser', createdUser);
-        // TODO reset form    
 
+        // reset form    
+        this.newUser.email = '';
+        this.newUser.password = '';
+
+        // send email verification
         this.authService.sendEmailVerification();
       })
       .catch(error => console.error(error.message));
