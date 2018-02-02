@@ -1,6 +1,6 @@
 <div>
 
-  <form [formGroup]="form" (ngSubmit)="saveQuote()">
+  <form [formGroup]="form" (ngSubmit)="saveQuote()" *ngIf="active">
     <mat-form-field>
       <input type="text" formControlName="firstname" placeholder="prénom de l'auteur" matInput>
     </mat-form-field>

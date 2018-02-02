@@ -10,6 +10,8 @@ import { Quote } from '../../../quote.interface';
 })
 export class CreateQuoteComponent implements OnInit {
   form: FormGroup;
+  // flag used to remove and add form is it really reset
+  private active : boolean = true ;
 
   @Input()
   thequote: Quote;
@@ -60,7 +62,12 @@ export class CreateQuoteComponent implements OnInit {
       this.update.emit(this.form);
       this.isInEditMode = !this.isInEditMode;
     }
+    console.log('before reset');
     this.form.reset();
+    // old hack to reset form validation as ng-invalid is added after submission
+    this.active = false;
+    setTimeout( () => this.active = true, 0);
+    
     this.verb = 'ajouter';
   }
 
