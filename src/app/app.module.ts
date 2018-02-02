@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  
 
 // firebase
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -20,6 +21,9 @@ import { BackendHomeComponent } from './backend/backend-home/backend-home.compon
 import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
 import { QuoteComponent } from './quote/quote.component';
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
+
+// material design
+import { MaterialModule } from './material.module';
 
 const config: FirebaseAppConfig = {
   apiKey: "AIzaSyDNP4-DZ4QenTZho4W4pAWvKgVsJZoO55g",
@@ -54,7 +58,9 @@ const ROUTES: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(ROUTES),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [
     QuotesService,
