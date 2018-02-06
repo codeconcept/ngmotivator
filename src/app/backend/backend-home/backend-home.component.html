@@ -3,7 +3,9 @@
 <hr>
 <mat-tab-group>
     <mat-tab label="Connexion">
-        <app-register-user></app-register-user>        
+        <app-login></app-login>   
+        <app-register-user></app-register-user>   
+
     </mat-tab>
     <mat-tab label="Citations">
         <app-create-quote (create)="onQuoteCreated($event)" (update)="onQuoteUpdated($event)"></app-create-quote>        

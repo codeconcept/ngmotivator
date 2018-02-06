@@ -21,6 +21,7 @@ import { BackendHomeComponent } from './backend/backend-home/backend-home.compon
 import { BackendQuotesComponent } from './backend/backend-quotes/backend-quotes.component';
 import { QuoteComponent } from './quote/quote.component';
 import { RegisterUserComponent } from './authentication/register-user/register-user.component';
+import { LoginComponent } from './authentication/login/login.component';
 
 // material design
 import { MaterialModule } from './material.module';
@@ -49,7 +50,8 @@ const ROUTES: Routes = [
     BackendHomeComponent,
     BackendQuotesComponent,
     QuoteComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

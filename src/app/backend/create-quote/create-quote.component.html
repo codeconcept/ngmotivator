@@ -1,5 +1,4 @@
-<div>
-
+<div *ngIf="isAdmin">
   <form [formGroup]="form" (ngSubmit)="saveQuote()" *ngIf="active">
     <mat-form-field>
       <input type="text" formControlName="firstname" placeholder="prénom de l'auteur" matInput>
@@ -16,4 +15,8 @@
     <button mat-raised-button color="primary">{{verb}} la citation</button>
     <button (click)="cancelEdit()" *ngIf="isInEditMode" mat-raised-button color="accent">annuler la modification</button>
   </form>
+</div>
+
+<div *ngIf="!isAdmin">
+  Veuillez vous connecter avec un compte autorisé à gérer les citations.
 </div>

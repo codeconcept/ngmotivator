@@ -1,0 +1,16 @@
+<h3>Se connecter (j'ai déjà un compte)</h3>
+<div>
+  <form #login="ngForm" (ngSubmit)="loginUser()" *ngIf="!(authService.user$ | async)">
+    <mat-form-field>
+      <input type="text" matInput name="email" placeholder="email" [(ngModel)]="existingUser.email">
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput name="password" [(ngModel)]="existingUser.password">
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">se connecter</button>
+  </form>
+</div>
+<div *ngIf="authService.user$ | async">
+  <span>connecté en tant que {{ (authService.user$ | async)?.email }}</span>
+  <button mat-raised-button color="primary" type="button" (click)="logoutUser()">se déconnecter</button>
+</div>

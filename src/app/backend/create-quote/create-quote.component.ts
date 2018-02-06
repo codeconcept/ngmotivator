@@ -2,6 +2,8 @@ import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { QuotesService } from '../../quotes/services/quotes.service';
 import { Quote } from '../../../quote.interface';
+import { AuthService } from '../../authentication/services/auth.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-create-quote',
@@ -11,7 +13,7 @@ import { Quote } from '../../../quote.interface';
 export class CreateQuoteComponent implements OnInit {
   form: FormGroup;
   // flag used to remove and add form is it really reset
-  private active : boolean = true ;
+  private active: boolean = true;
 
   @Input()
   thequote: Quote;
@@ -26,7 +28,9 @@ export class CreateQuoteComponent implements OnInit {
   isInEditMode = false;
   verb = 'ajouter';
 
-  constructor(private formBuilder: FormBuilder, private quotesService: QuotesService) { }
+  isAdmin: boolean = false;
+
+  constructor(private formBuilder: FormBuilder, private quotesService: QuotesService, private authService: AuthService) { }
 
   ngOnInit() {
     this.form = this.formBuilder.group({
@@ -45,8 +49,22 @@ export class CreateQuoteComponent implements OnInit {
       this.form.get('lastname').patchValue(this.quote.lastname);
       this.form.get('quote').patchValue(this.quote.text);
       this.form.get('key').patchValue(this.quote.key);
-
     });
+
+    this.authService.user$.subscribe(user => {
+      console.log('user: ', user);
+      if(user && user.email === 'contact@codeconcept.fr') {
+        this.isAdmin = true;
+      } else {
+        this.isAdmin = false;
+      }
+    }, error => {
+      console.error(error);
+    });
+
+
+    // TODO unsubscribe on component destroy
+
   }
 
   saveQuote() {
@@ -66,8 +84,8 @@ export class CreateQuoteComponent implements OnInit {
     this.form.reset();
     // old hack to reset form validation as ng-invalid is added after submission
     this.active = false;
-    setTimeout( () => this.active = true, 0);
-    
+    setTimeout(() => this.active = true, 0);
+
     this.verb = 'ajouter';
   }
 
